@@ -57,8 +57,8 @@ rclcpp::Subscription<typ premennej>::SharedPtr nazov premennej
 - súbory je potrebné umiestniť do zložky src 
 - implementujte funckie
 
-
-### Tvorba konštruktora
+------
+### Tvorba Publisheru
 V konštruktore je potrebné vytvoriť ROS2 publisher typu std_msgs::msg::Int32 ktorý bude publikovať na tému "bpl_number_topic"
 a vytvoriť wall_timer, ktorý nám bude v určitom intervale pričítavať a vysielať
 
@@ -94,6 +94,23 @@ RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
 publish(message)
 ```
 
+------
+### Tvorba Subscriberu
+Inicialiácia premenných, ktoré sa doplnia k definícii konštruktora
+```
+: Node("bpl_subscriber")
+```
+k vytvorenej premennej v .hpp, ktorá nám ukladá ukazovateľ na objekt, ktorý bude odoberať
+```
+subscription_ = this->create_subscription<std_msgs::msg::Int32>("bpl_number_topic", 10, std::bind(&Subscriber::number_cb, this, std::placeholders::_1));
+```
+v callback funkcii je potrebné prečítať data z message a vypísať do konzole
+
+Pristup k datam:
+```
+msg->data
+```
+
 
 
 
@@ -108,6 +125,16 @@ int main(int argc, char **argv) {
 }
 ```
 
+Pridať do subscriber.cpp
+```
+int main(int argc, char **argv) {
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<Subscriber>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+```
 -------
 ## Spustenie
 ```
