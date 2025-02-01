@@ -39,6 +39,19 @@ pomocou nasledujúceho príkazu je možné vytvoriť náš vlastný package
 ros2 pkg create --build-type ament_cmake bpl_pub_sub
 ```
 
+## Tvorba .hpp suborov
+- stiahnite si základnú štruktúru z gitu
+- súbory je potrebné umiestniť do zložky v includes 
+- doplnte chýbajúce body
+
+Definícia Publisher
+rclcpp::Publisher<typ premennej>::SharedPtr nazov premennej
+
+Definícia Subscription
+rclcpp::Subscription<typ premennej>::SharedPtr nazov premennej
+
+
+
 -------
 ## Spustenie
 ```
