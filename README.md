@@ -62,6 +62,8 @@ rclcpp::Subscription<typ premennej>::SharedPtr nazov premennej
 V konštruktore je potrebné vytvoriť ROS2 publisher typu std_msgs::msg::Int32 ktorý bude publikovať na tému "bpl_number_topic"
 a vytvoriť wall_timer, ktorý nám bude v určitom intervale pričítavať a vysielať
 
+#### Konštruktor
+
 Inicialiácia premenných, ktoré sa doplnia k definícii konštruktora
 ```
 : Node("bpl_publisher"), number_(0)
@@ -77,6 +79,25 @@ doplnenie wall_timer-u, ktorý nám bude každú sekundu volať funkciu
 timer_ = this->create_wall_timer(std::chrono::seconds(1),std::bind(&Publisher::publish, this));
 ```
 
+#### Funkcia pre publish
+- inicializácia premennej message
+```
+auto message = std_msgs::msg::Int32();
+```
+- následne k premennej data, ktorá je súčasťou message, je potrebné priradiť inkrementované číslo
+- pomocou RCLCPP_INFO si môžeme do konzole vypísať obsah správy
+```
+RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
+```
+- pomocou metody publish, môžeme pomocou vytvoreného ukazovatela na objekt rclcpp::Publisher<typ premennej>::SharedPtr
+```
+publish(message)
+```
+
+
+
+
+Pridať do publisher.cpp
 ```
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
