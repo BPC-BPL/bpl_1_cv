@@ -24,6 +24,16 @@ ros2 run demo_nodes_cpp listener
 
 - pomocou rqt_graph vizualizujte prepojenie medzi demo nodes
 
+### Spustenie demo node
+spustenie demo node, ktory poskytuje servis pre scitanie dvoch čísiel
+```
+ros2 run demo_nodes_cpp add_two_ints_server
+```
+v druhej konzole si zavoláme servis pomocou
+```
+ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 5, b: 10}"
+```
+
 -------
 ## Tvorba vlastného packagu
 ako prvé je potrebné vytvoriť pracovnú zložku
