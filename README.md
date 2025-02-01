@@ -44,13 +44,48 @@ ros2 pkg create --build-type ament_cmake bpl_pub_sub
 - súbory je potrebné umiestniť do zložky v includes 
 - doplnte chýbajúce body
 
-Definícia Publisher
+Deklarácia Publisher
+
 rclcpp::Publisher<typ premennej>::SharedPtr nazov premennej
 
-Definícia Subscription
+Deklarácia Subscription
+
 rclcpp::Subscription<typ premennej>::SharedPtr nazov premennej
 
+## Tvorba .cpp suborov
+- stiahnite si základnú štruktúru z gitu
+- súbory je potrebné umiestniť do zložky src 
+- implementujte funckie
 
+
+### Tvorba konštruktora
+V konštruktore je potrebné vytvoriť ROS2 publisher typu std_msgs::msg::Int32 ktorý bude publikovať na tému "bpl_number_topic"
+a vytvoriť wall_timer, ktorý nám bude v určitom intervale pričítavať a vysielať
+
+Inicialiácia premenných, ktoré sa doplnia k definícii konštruktora
+```
+: Node("bpl_publisher"), number_(0)
+```
+
+k vytvorenej premennej v .hpp, ktorá nám ukladá ukazovateľ na objekt, ktorý bude publikovať
+```
+this->create_publisher<std_msgs::msg::Int32>("bpl_number_topic", 10);
+```
+
+doplnenie wall_timer-u, ktorý nám bude každú sekundu volať funkciu
+```
+timer_ = this->create_wall_timer(std::chrono::seconds(1),std::bind(&Publisher::publish, this));
+```
+
+```
+int main(int argc, char **argv) {
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<Publisher>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+```
 
 -------
 ## Spustenie
