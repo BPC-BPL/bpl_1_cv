@@ -8,7 +8,7 @@ public:
     //vytvoriť konštruktor
 
 private:
-    //funkciu pre publish void publish();
+    //funkciu pre publish
     //definovať Publisher typu std_msgs::msg::Int32
     rclcpp::TimerBase::SharedPtr timer_;
     //internu premennu pre ukladanie celeho čisla

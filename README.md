@@ -4,7 +4,8 @@
 - zoznámenie s systémom ROS 2
 - demo ROS node, topic, service
 - tvorba vlastného packagu
-- vlasty publisher/subscriber
+- vlastny publisher/subscriber
+- uvod do mavros
 
 -------
 ### Spustenie demo publisheru
@@ -35,6 +36,8 @@ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 5, b: 10}
 ```
 
 -------
+# Prvá časť
+
 ## Tvorba vlastného packagu
 ako prvé je potrebné vytvoriť pracovnú zložku
 ```
@@ -179,3 +182,46 @@ ros2 run bpl_pub_sub publisher
 ```
 ros2 run bpl_pub_sub subscriber
 ```
+
+# Druha časť
+
+## MAVROS
+node, ktorý tvorí prepojenie medzi letovou jednotkou a ROS-om
+
+Ako prvé budeme potrebovať spustiť Ardupilot SITL (Software in the loop)
+- prostredie máme už pripravané
+
+
+```
+cd ardu_ws
+```
+
+nakoľko sa nejedná o knižnicu, ktorá je vstavaná v základnej inštalácií ROS-u, je potrebné sourcnuť .bash z knižnice
+```
+source install/setup.bash
+```
+
+následne môžeme spustiť simulátor
+```
+ros2 launch ardupilot_gz_bringup iris_runway.launch.py
+```
+
+po spustení simulátora, môžeme spustiť mavros
+```
+ros2 launch mavros apm.launch fcu_url:=udp://:14550@localhost:14555 gcs_url:="udp://" tgt_system:=1 tgt_component:=1
+```
+
+nasledne môžete zistiť typ správy pomocou ktorej sa zdiela stav:
+- batérie
+- GPS
+- stav UAV (state)
+- IMU
+
+## Nový package bpl_uav_control
+
+vytvoríme nový package bpl_uav_control
+
+po vytvorení môžeme s zložky pridať predpripravené súbory
+
+- zistené typy správ je potrebné doplniť do .hpp a .cpp suborov
+- údaje vypíšte do konzole
