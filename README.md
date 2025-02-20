@@ -58,13 +58,13 @@ ros2 pkg create --build-type ament_cmake bpl_pub_sub
 - doplnte chýbajúce body
 
 Deklarácia Publisher
-
+```
 rclcpp::Publisher<typ premennej>::SharedPtr nazov premennej
-
+```
 Deklarácia Subscription
-
+```
 rclcpp::Subscription<typ premennej>::SharedPtr nazov premennej
-
+```
 ## Tvorba .cpp suborov
 - stiahnite si základnú štruktúru z gitu
 - súbory je potrebné umiestniť do zložky src 
