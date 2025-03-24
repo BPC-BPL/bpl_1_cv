@@ -7,6 +7,23 @@
 - vlastny publisher/subscriber
 - uvod do mavros
 
+### Uzitocne veci
+nasourcovanie ROSu
+```
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+inštalacia MAVROS
+```
+sudo apt update
+sudo apt install ros-humble-mavros ros-humble-mavros-extras
+```
+geographiclib 
+```
+sudo apt install geographiclib-tools
+sudo geographiclib-get-geoids egm96-5
+```
+
 -------
 ### Spustenie demo publisheru
 ```
