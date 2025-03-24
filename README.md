@@ -131,7 +131,7 @@ RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
 ```
 - pomocou metody publish, môžeme pomocou vytvoreného ukazovatela na objekt rclcpp::Publisher<typ premennej>::SharedPtr
 ```
-publish(message)
+publisher_->publish(message);
 ```
 
 ------
