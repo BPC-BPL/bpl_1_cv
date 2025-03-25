@@ -10,7 +10,7 @@
 ### Uzitocne veci
 nasourcovanie ROSu
 ```
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/humble/local_setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 inštalacia MAVROS
