@@ -13,6 +13,10 @@ nasourcovanie ROSu
 echo "source /opt/ros/humble/local_setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
+nastavenie unikatneho domain id
+```
+ROS_DOMAIN_ID=X
+```
 inštalacia MAVROS
 ```
 sudo apt update
