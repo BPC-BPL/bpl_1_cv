@@ -222,7 +222,7 @@ node, ktorý tvorí prepojenie medzi letovou jednotkou a ROS-om
 Ako prvé budeme potrebovať spustiť Ardupilot SITL (Software in the loop)
 - prostredie máme už pripravané
 
-
+kto by chcel doma vyskúšať SITL s Gazebo a ROSom, postup inštalácie https://ardupilot.org/dev/docs/ros2-sitl.html
 ```
 cd ardu_ws
 ```
@@ -256,3 +256,5 @@ po vytvorení môžeme s zložky pridať predpripravené súbory
 
 - zistené typy správ je potrebné doplniť do .hpp a .cpp suborov
 - údaje vypíšte do konzole
+
+taktiež bude potrebné na ROS wiki zistiť premenné jednotlivých tém
