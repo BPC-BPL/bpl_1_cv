@@ -78,6 +78,14 @@ vstup do zložky
 ```
 cd ros2_bpl
 ```
+vytvorenie src zložky
+```
+mkdir src
+```
+vstup do zložky
+```
+cd src
+```
 pomocou nasledujúceho príkazu je možné vytvoriť náš vlastný package
 ```
 ros2 pkg create --build-type ament_cmake bpl_pub_sub
@@ -250,11 +258,44 @@ nasledne môžete zistiť typ správy pomocou ktorej sa zdiela stav:
 
 ## Nový package bpl_uav_control
 
-vytvoríme nový package bpl_uav_control
-
-po vytvorení môžeme s zložky pridať predpripravené súbory
-
+- vytvoríme nový package bpl_uav_control
+- po vytvorení môžeme s zložky pridať predpripravené súbory
 - zistené typy správ je potrebné doplniť do .hpp a .cpp suborov
 - údaje vypíšte do konzole
 
-taktiež bude potrebné na ROS wiki zistiť premenné jednotlivých tém
+pomocou ROS wiki je možné tatiež zistiť obsah správ jednotlivých tém
+
+vstup do zložky
+```
+cd ros2_bpl
+```
+pomocou nasledujúceho príkazu je možné vytvoriť náš vlastný package bpl_uav_control
+```
+ros2 pkg create --build-type ament_cmake bpl_uav_control
+```
+pre prácu budeme potrebovať vlastné rozhrania bpl_interfaces,
+```
+git clone https://github.com/BPC-BPL/bpl_interfaces
+```
+potrebujeme byť mimo repozitaru src
+```
+cd ..
+```
+všeobecne kde nechceme buildovat všetky zložky v src tak môžeme jednotlivo pomocou
+```
+colcon build --packages-select <package_name>
+```
+takže bpl_interfaces
+```
+colcon build --packages-select bpl_interfaces
+```
+znova je po builde potrebne sourcnut setup.bash
+```
+source install/setup.bash
+```
+následne môžeme buildovať pomocou
+```
+colcon build
+```
+
+je potrebné opraviť všetky chyby pokiaľ nebude build úspešný
