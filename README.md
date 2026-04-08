@@ -215,6 +215,10 @@ int main(int argc, char **argv) {
 ```
 -------
 ## Spustenie
+nakoľko sa nejedná o knižnicu, ktorá je vstavaná v základnej inštalácií ROS-u, je potrebné sourcnuť .bash z knižnice
+```
+source install/setup.bash
+```
 ```
 ros2 run bpl_pub_sub publisher
 ```
