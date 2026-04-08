@@ -303,3 +303,21 @@ colcon build
 ```
 
 je potrebné opraviť všetky chyby pokiaľ nebude build úspešný
+
+potrebné doplniť typy správ v súboroch .hpp .cpp
+
+typy správ môžeme zistiť pomocou
+```
+ros2 topic list
+```
+![rostopic list](rostopic.png)
+
+a konktétny typ správy pomocou
+```
+ros2 topic list nazovTopic
+```
+
+![rostopic info](rostopicinfo.png)
+
+Príklad pre .hpp
+sensor_msgs/msg/BatteryState -> zapíšeme ako -> sensor_msgs::msg::BatteryState
